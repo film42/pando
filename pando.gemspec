@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Pando::VERSION
   spec.authors       = ["Garrett Thornburg"]
   spec.email         = ["film42@gmail.com"]
-  spec.summary       = %q{A generic service directory gem that uses zookepper.}
-  spec.description   = %q{A generic service directory gem that uses zookepper.}
+  spec.summary       = %q{A generic service directory gem that uses zookeeper.}
+  spec.description   = %q{A generic service directory gem that uses zookeeper.}
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
