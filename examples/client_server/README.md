@@ -6,6 +6,12 @@ In this example, there are 3 servers, and 1 client. Each server will listen hand
 
 You can run the example by installing foreman `gem intall foreman` and running `foreman start` in this directory.
 
+#### Screenshot
+
+Here's a screenshot of zookeeper when the servers are started.
+
+![Zookeeper](screenshot.png)
+
 #### Output
 
 ```
