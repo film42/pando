@@ -1,7 +1,7 @@
 Pando
 =====
 
-Pando is a cross-platform zookeeper powered generic service directory. Pando uses a hierarchy of hierarchacal design to allow for access across environments.
+Pando is a cross-platform zookeeper powered generic service directory. Pando uses a hierarchacal design to allow for access across environments.
 
 Here's an example of Pando's topology:
 
@@ -16,7 +16,7 @@ s1.sand
 
 ```
 
-The topology reads like the following: an environment has a services directory, a service is given the name of its resource (ex: Users, Things, etc) and each resource is ephemeral instinaces. Ephemeral instances are the bread and butter of Pando. When a new application announces resouce instances to the network (starts up), it will only be available for as long as the application is connected to zookeeper (running). As soon as the connection to zookeeper is terminated, so do all of the instances linked to the application.
+The topology reads like the following: an environment has a services directory, inside that are resources (ex: Users, Things, etc) and each resource has ephemeral instinaces. Ephemeral instances are the bread and butter of Pando. When a new application announces its resouce instances to the network (starts up), it will only be available for as long as the application is connected to zookeeper (running). As soon as the connection to zookeeper is terminated, so do all of the instances linked to the application.
 
 ### Usage
 
@@ -43,6 +43,16 @@ service_directory.announce(:resource => :users, :instances => [instance])
 ```
 
 This will setup a connection to zookeeper and will add your instance to the service directory.
+
+#### Take Down
+
+In order to make sure no clients are accessing out of date instances (aka, the instance is shutting down or not accepting connections), you can remove individual instances.
+
+```ruby
+instance = ::Pando::Instance.new(:host => 'probably.localhost', :port => '43000')
+service_directory = ::Pando::ServiceDirectory.new
+service_directory.take_down(:users, instance)
+```
 
 #### Connecting
 
