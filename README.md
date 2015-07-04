@@ -56,6 +56,10 @@ puts instance.port #=> 43000
 puts instance.host #=> "probably.localhost"
 ```
 
+### Examples
+
+There are examples in the example directory of this repo.
+
 ### Installation
 
 Add this line to your application's Gemfile:
@@ -67,7 +71,6 @@ gem 'pando'
 Or install it yourself as:
 
     $ gem install pando
-
 
 ### Disclaimer
 

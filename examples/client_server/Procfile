@@ -1,0 +1,4 @@
+server1: ruby -I../../lib server.rb 1
+server2: ruby -I../../lib server.rb 2
+server3: ruby -I../../lib server.rb 3
+client: ruby -I../../lib client.rb
