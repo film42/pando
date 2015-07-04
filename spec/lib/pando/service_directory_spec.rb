@@ -6,7 +6,7 @@ describe ::Pando::ServiceDirectory do
     described_class.client = double("zk")
   end
 
-  context 'announce' do
+  context '#announce' do
     it 'can announce an instance to zookeeper' do
       instance = ::Pando::Instance.new(:host => 'lol', :port => '432')
 
@@ -27,7 +27,7 @@ describe ::Pando::ServiceDirectory do
     end
   end
 
-  context 'instance_for' do
+  context '#instance_for' do
     it 'can receive an instance from zookeeper' do
       allow(subject.client).to receive(:children)
         .with('/default/services/things')
@@ -58,6 +58,17 @@ describe ::Pando::ServiceDirectory do
   context '#base_path' do
     it 'creates a valid base path' do
       expect(subject.base_path).to eq('/default/services')
+    end
+  end
+
+  context '#take_down' do
+    it 'will remove an announced instance from zookeeper' do
+      instance = ::Pando::Instance.new(:host => 'lol', :port => '432')
+
+      allow(subject.client).to receive(:rm_rf)
+        .with("/default/services/things/#{instance.guid}")
+
+      expect(subject.take_down(:things, instance))
     end
   end
 end

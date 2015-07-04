@@ -33,6 +33,10 @@ module Pando
       end
     end
 
+    def take_down(resource, instance)
+      client.rm_rf("#{base_path}/#{resource}/#{instance.guid}")
+    end
+
     def base_path
       "/#{environment}/services"
     end
